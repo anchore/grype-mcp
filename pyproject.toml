@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "grype-mcp"
-version = "0.2.0"
+version = "0.3.0"
 description = "Official Anchore Grype MCP Server for AI-assisted vulnerability scanning"
 readme = "README.md"
 license = {text = "Apache-2.0"}
@@ -71,7 +71,7 @@ line-length = 120
 target-version = ['py310', 'py311', 'py312']
 
 [tool.ruff]
-target-version = "0.2.0"
+target-version = "0.3.0"
 line-length = 120
 select = [
     "E",  # pycodestyle errors
