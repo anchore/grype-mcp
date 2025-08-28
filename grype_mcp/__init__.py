@@ -1,0 +1,1 @@
+"""Grype MCP Server - Vulnerability scanning for AI assistants"""

@@ -1,0 +1,93 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "grype-mcp"
+version = "0.1.0"
+description = "Official Anchore Grype MCP Server for AI-assisted vulnerability scanning"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+authors = [
+    {name = "Alan Pope", email = "alan.pope@anchore.com"},
+]
+maintainers = [
+    {name = "Alan Pope", email = "alan.pope@anchore.com"},
+]
+keywords = ["security", "vulnerability", "scanning", "mcp", "ai", "grype", "anchore"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11", 
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+    "Topic :: Software Development",
+    "Topic :: System :: Systems Administration",
+]
+requires-python = ">=3.10"
+dependencies = [
+    "mcp>=1.0.0",
+    "click>=8.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+    "build>=0.10.0",
+    "twine>=4.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/anchore/grype-mcp"
+Documentation = "https://github.com/anchore/grype-mcp#readme"
+Repository = "https://github.com/anchore/grype-mcp.git"
+Issues = "https://github.com/anchore/grype-mcp/issues"
+Changelog = "https://github.com/anchore/grype-mcp/releases"
+
+[project.scripts]
+grype-mcp = "grype_mcp.server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["grype_mcp"]
+
+# Include additional files if needed
+[tool.hatch.build.targets.sdist]
+include = [
+    "/grype_mcp",
+    "/README.md",
+    "/LICENSE",
+    "/pyproject.toml",
+]
+
+[tool.black]
+line-length = 120
+target-version = ['py310', 'py311', 'py312']
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+    "C4", # flake8-comprehensions
+    "UP", # pyupgrade
+]
+ignore = [
+    "E501", # line too long, handled by black
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
