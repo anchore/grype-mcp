@@ -14,7 +14,7 @@ Integrate [Grype](https://github.com/anchore/grype) vulnerability scanning direc
 
 Install using uvx (recommended):
 ```bash
-uvx install grype-mcp
+uvx grype-mcp
 ```
 
 Or using pipx:
